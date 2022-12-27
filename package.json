@@ -1,0 +1,20 @@
+{
+    "name": "datalands",
+    "version": "1.0.0",
+    "description": "centralized platfrom with articles and resources related to Data Science/Engineering",
+    "main": "app.js",
+    "scripts": {
+        "start": "nodemon app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^5.1.0",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2",
+        "nodemon": "^2.0.20",
+        "pg": "^8.8.0",
+        "postgres": "^3.3.2"
+    }
+}
