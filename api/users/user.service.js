@@ -11,13 +11,12 @@ module.exports = {
     */
     create: (data, callBack) => {
         pool.query(
-            `insert into "Users"(firstname, lastname, email, password) values($1, $2, $3, $4)
-                `, [
+            "insert into users(firstname, lastname, email, password) values(?,?, ?, ?)", [
                 data.firstname,
                 data.lastname,
                 data.email,
                 data.password
-            ], (error, results, ) => {
+            ], (error, results) => {
                 if (error) {
                     return callBack(error)
                 }
@@ -26,10 +25,11 @@ module.exports = {
     },
     getUserByEmail: (data, callBack) => {
         pool.query(
-            'select * from "Users" where email= $1 ', [data.email],
+            'select * from users where email= ?', [data.email],
             (error, results) => {
-                if (error) return callBack(error)
+                if (error) return callBack(error);
                 return callBack(null, results)
             })
-    }
+    },
+    
 }
