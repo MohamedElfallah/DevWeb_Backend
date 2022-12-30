@@ -1,7 +1,7 @@
-const { createConnection} = require('mysql2')
+const { Pool } = require('pg')
 require('dotenv').config()
 
-const connection = createConnection({
+const connection = new Pool({
     user: process.env.PGUSER,
     host: process.env.PGHOST,
     port: process.env.PGPORT,

@@ -1,24 +1,27 @@
-const {articles, articlesOfuser} = require("./article.service")
+const { articles, articlesOfuser } = require("./article.service")
 
 
 module.exports = {
-    getArticles : (req, res) => {
-        const {source} = req.query
+    getArticles: (req, res) => {
+        const { source } = req.query
         console.log(source)
-        
-        articles(source, (error, results)=>{
-            if(error) return res.json({success : 0,
-            message: error});
-            return res.json({success : 1, data : results})
+
+        articles(source, (error, results) => {
+            if (error) return res.json({
+                success: 0,
+                message: error
+            });
+            return res.json({ success: 1, data: results.rows })
         })
     },
-    getSavedArticlesByUser: (req,res)=>{
+    getSavedArticlesByUser: (req, res) => {
         const data = req.params;
-        articlesOfuser(data,(error,results)=>{
-            if(error) return res.json({success:0, message: "DB connection failure"})
+        console.log(data)
+        articlesOfuser(data, (error, results) => {
+            if (error) return res.json({ success: 0, message: "DB connection failure" })
             return res.json({
-                success:1,
-                data: results
+                success: 1,
+                data: results.rows
             })
         })
     }
